@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assisi 2026 | In Cammino</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Philosopher:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #bc6c25;
+            --secondary: #606c38;
+            --light: #fefae0;
+            --stone: #f4e9e2;
+            --dark: #283618;
+            --white-glass: rgba(255, 255, 255, 0.15);
+            --white-line: rgba(255, 255, 255, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--light); 
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .section-title {
+            font-family: 'Philosopher', sans-serif;
+            color: var(--secondary);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-subtitle {
+            color: #6f7b4f;
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.38), rgba(40, 54, 24, 0.62)), 
+                        url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 50% 100%, 0 92%);
+            padding: 40px 16px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, rgba(254,250,224,0.12), transparent 35%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 980px;
+        }
+
+        .hero-kicker {
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 10px;
+            opacity: 0.85;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .hero h1 { 
+            font-family: 'Philosopher', sans-serif; 
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            text-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+            margin-bottom: 0.75rem;
+            line-height: 0.95;
+        }
+
+        .hero-lead {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .countdown {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .count-box {
+            background: var(--white-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--white-line);
+            padding: 20px;
+            border-radius: 20px;
+            min-width: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .count-box span { 
+            font-size: 2.2rem; 
+            font-weight: 800; 
+            display: block; 
+            line-height: 1;
+        }
+
+        .count-box small { 
+            text-transform: uppercase; 
+            font-size: 0.7rem; 
+            letter-spacing: 1px; 
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta,
+        .btn-soft {
+            padding: 18px 34px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cta {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(188, 108, 37, 0.3);
+        }
+
+        .btn-cta:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-soft {
+            background: rgba(255,255,255,0.14);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.28);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-soft:hover {
+            color: white;
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .intro-section,
+        .staff-section,
+        .program-section,
+        .bag-section,
+        .final-section {
+            padding: 100px 0;
+        }
+
+        .intro-card,
+        .program-card,
+        .bag-card,
+        .quote-card {
+            background: white;
+            border-radius: 28px;
+            padding: 34px 28px;
+            border: none;
+            box-shadow: 0 10px 40px rgba(188, 108, 37, 0.08);
+            height: 100%;
+            transition: all 0.35s ease;
+        }
+
+        .intro-card:hover,
+        .program-card:hover,
+        .bag-card:hover,
+        .quote-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(188, 108, 37, 0.14);
+        }
+
+        .intro-icon,
+        .bag-icon,
+        .program-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .intro-card h3,
+        .program-card h3,
+        .bag-card h3,
+        .quote-card h3 {
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .intro-card p,
+        .program-card p,
+        .bag-card p,
+        .quote-card p {
+            color: #5d6741;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .staff-section {
+            background: linear-gradient(180deg, transparent 0%, rgba(244, 233, 226, 0.55) 100%);
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px 20px;
+            border: none;
+            box-shadow: 0 10px 40px rgba(188, 108, 37, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-15px);
+            background: var(--stone);
+            box-shadow: 0 20px 50px rgba(188, 108, 37, 0.2);
+        }
+
+        .staff-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            background: var(--light);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .staff-role {
+            background: var(--stone);
+            color: var(--primary);
+            border-radius: 999px;
+            padding: 10px 16px;
+            display: inline-block;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 1.2rem;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), rgba(188,108,37,0.15));
+            border-radius: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 24px 24px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 7px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 0 6px rgba(96,108,56,0.13);
+        }
+
+        .timeline-step {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .timeline-item h4 {
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #5d6741;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .bag-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .bag-list li {
+            background: var(--stone);
+            border-radius: 18px;
+            padding: 14px 16px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .bag-list i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .final-box {
+            background: linear-gradient(135deg, var(--secondary), #4f5a2f);
+            color: white;
+            border-radius: 34px;
+            padding: 50px 36px;
+            box-shadow: 0 20px 50px rgba(96,108,56,0.25);
+            text-align: center;
+        }
+
+        .final-box h2 {
+            font-family: 'Philosopher', sans-serif;
+            font-size: clamp(2.3rem, 5vw, 4.2rem);
+            margin-bottom: 1rem;
+        }
+
+        .final-box p {
+            max-width: 780px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.9;
+        }
+
+        footer {
+            padding: 50px 0 60px;
+        }
+
+        @media (max-width: 991.98px) {
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                clip-path: polygon(0 0, 100% 0, 100% 96%, 50% 100%, 0 96%);
+            }
+
+            .hero-kicker {
+                letter-spacing: 6px;
+                font-size: 0.8rem;
+            }
+
+            .count-box {
+                min-width: 86px;
+                padding: 16px;
+            }
+
+            .count-box span {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
+            <p class="hero-kicker">Viaggio Ado</p>
+            <h1>Assisi <span style="font-style: italic; color: var(--light);">2026</span></h1>
+            <p class="hero-lead">
+                Un viaggio di fine giugno per stare insieme davvero, camminare, respirare un po’ di bellezza,
+                vivere il gruppo con più profondità del solito e tornare a casa con qualcosa che resta.
+            </p>
+            
+            <div class="countdown">
+                <div class="count-box"><span id="d">00</span><small>Giorni</small></div>
+                <div class="count-box"><span id="h">00</span><small>Ore</small></div>
+                <div class="count-box"><span id="m">00</span><small>Minuti</small></div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#animatori" class="btn-cta"><i class='bx bx-group'></i>Gli animatori</a>
+                <a href="#programma" class="btn-soft"><i class='bx bx-map'></i>Scopri il viaggio</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container intro-section">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Perché Assisi</h2>
+            <p class="section-subtitle">
+                Non solo una meta, ma un’occasione fatta bene per vivere giornate diverse dal solito.
+                Assisi ha il ritmo giusto per un viaggio ado: bella da attraversare, forte da ascoltare,
+                semplice solo in apparenza.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="intro-card text-center">
+                    <div class="intro-icon"><i class='bx bxs-bus'></i></div>
+                    <h3>Partenza</h3>
+                    <p>Si parte a fine giugno con zaini pronti, sonno discutibile e aspettative alte. Ottimo inizio scientificamente valido.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="intro-card text-center">
+                    <div class="intro-icon"><i class='bx bxs-church'></i></div>
+                    <h3>Luogo</h3>
+                    <p>Vicoli, piazze, salite, panorami e luoghi che ti costringono gentilmente a rallentare e guardare meglio.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="intro-card text-center">
+                    <div class="intro-icon"><i class='bx bxs-heart'></i></div>
+                    <h3>Gruppo</h3>
+                    <p>Tempo condiviso, attività, chiacchiere vere, libertà ben tenuta e qualche momento che lascia il segno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="staff-section" id="animatori">
+        <div class="container-fluid px-5">
+        
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Gli Animatori</h2>
+                <p class="section-subtitle">Pronti a camminare insieme a te</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center" id="staffGrid" style="max-width:1600px;margin:auto"></div>
+        </div>
+    </section>
+
+    <section class="container program-section" id="programma">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-7" data-aos="fade-right">
+                <div class="program-card h-100">
+                    <div class="program-icon"><i class='bx bx-route'></i></div>
+                    <h3>Il senso del viaggio</h3>
+                    <p>
+                        Il programma preciso arriverà più avanti, ma la direzione è già chiara: non una gita buttata lì,
+                        ma un’esperienza costruita con criterio. Che è una parola poco sexy, ma molto utile.
+                    </p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-step">01</div>
+                            <h4>Partire bene</h4>
+                            <p>Entrare nel viaggio insieme, staccare dal ritmo normale e aprire davvero il tempo che avremo davanti.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-step">02</div>
+                            <h4>Vivere Assisi</h4>
+                            <p>Camminare, visitare, ascoltare, vedere e lasciarsi un po’ smuovere dai luoghi e dagli incontri.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-step">03</div>
+                            <h4>Stare insieme sul serio</h4>
+                            <p>Condivisione, attività, leggerezza, tempi comuni e momenti in cui il gruppo non è solo un mucchio di gente nello stesso posto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
+                <div class="quote-card h-100 d-flex flex-column justify-content-center text-center">
+                    <h3>Un viaggio che lascia qualcosa</h3>
+                    <p>
+                        Non serve riempire ogni minuto per fare un’esperienza forte. A volte bastano i posti giusti,
+                        il gruppo giusto e un po’ di disponibilità a non restare sempre in superficie.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container bag-section">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-5" data-aos="fade-up">
+                <div class="bag-card h-100">
+                    <div class="bag-icon"><i class='bx bx-briefcase-alt-2'></i></div>
+                    <h3>Cosa portare</h3>
+                    <p>
+                        La lista vera si potrà rifinire, ma intanto il principio è semplice: porta ciò che serve.
+                        Non tutta la tua biografia infilata nello zaino.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+                <div class="bag-card h-100">
+                    <ul class="bag-list">
+                        <li><i class='bx bx-check-circle'></i>Zaino comodo</li>
+                        <li><i class='bx bx-check-circle'></i>Borraccia</li>
+                        <li><i class='bx bx-check-circle'></i>Vestiti leggeri</li>
+                        <li><i class='bx bx-check-circle'></i>Felpa per la sera</li>
+                        <li><i class='bx bx-check-circle'></i>Scarpe giuste per camminare</li>
+                        <li><i class='bx bx-check-circle'></i>Occorrente personale</li>
+                        <li><i class='bx bx-check-circle'></i>Spirito di adattamento</li>
+                        <li><i class='bx bx-check-circle'></i>Voglia di esserci davvero</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container final-section">
+        <div class="final-box" data-aos="zoom-in">
+            <h2>Assisi ci aspetta</h2>
+            <p>
+                Un viaggio semplice solo in apparenza. In realtà uno di quelli che, se lo vivi bene,
+                rimane dentro più del previsto. E questa è la parte interessante.
+            </p>
+            <a href="#" class="btn-cta"><i class='bx bx-edit-alt'></i>Iscriviti Ora</a>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <p class="mt-0 text-muted small mb-0">&copy; 2026 - Insieme verso Assisi</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const animatori = [
+            { n: "Edoardo", r: "Guida", i: "bx-crown" },
+            { n: "Pietro", r: "Logistica", i: "bx-map-alt" },
+            { n: "Dennis", r: "Organizzazione", i: "bx-bolt-circle" },
+            { n: "Davide", r: "Presenza", i: "bx-sun" },
+            { n: "Alice", r: "Relazioni", i: "bx-heart-circle" },
+            { n: "Luca", r: "Musica", i: "bx-music" },
+            { n: "Vittorio", r: "Energia", i: "bx-medal" }
+        ];
+
+        const staffGrid = document.getElementById('staffGrid');
+        staffGrid.innerHTML = animatori.map((a, i) => `
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="${i * 100}">
+                <div class="staff-card text-center">
+                    <div class="staff-icon"><i class='bx ${a.i}'></i></div>
+                    <h4 class="fw-bold mb-2">${a.n}</h4>
+                    <span class="staff-role">${a.r}</span>
+                </div>
+            </div>
+        `).join('');
+
+        const end = new Date("June 25, 2026 08:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = end - now;
+
+            if (diff <= 0) {
+                document.getElementById('d').innerText = '00';
+                document.getElementById('h').innerText = '00';
+                document.getElementById('m').innerText = '00';
+                return;
+            }
+
+            document.getElementById('d').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById('h').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById('m').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
