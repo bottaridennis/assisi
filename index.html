@@ -52,8 +52,8 @@
 
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.38), rgba(40, 54, 24, 0.62)), 
-                        url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&q=80&w=1600');
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), 
+                        url('Assisi.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -155,6 +155,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            justify-content: center;
         }
 
         .btn-cta {
@@ -180,6 +181,10 @@
             color: white;
             transform: translateY(-3px);
             background: rgba(255,255,255,0.2);
+        }
+
+        .mobile-stack > * + * {
+            margin-top: 12px;
         }
 
         .intro-section,
@@ -239,6 +244,12 @@
 
         .staff-section {
             background: linear-gradient(180deg, transparent 0%, rgba(244, 233, 226, 0.55) 100%);
+        }
+
+        .staff-shell {
+            width: min(100%, 1680px);
+            margin: 0 auto;
+            padding-inline: 0;
         }
         
         .staff-card {
@@ -394,22 +405,356 @@
         }
 
         @media (max-width: 767.98px) {
+            body {
+                -webkit-tap-highlight-color: transparent;
+            }
+
             .hero {
-                clip-path: polygon(0 0, 100% 0, 100% 96%, 50% 100%, 0 96%);
+                min-height: auto;
+                padding: 96px 0 82px;
+                background-position: center center;
+                clip-path: polygon(0 0, 100% 0, 100% 97%, 50% 100%, 0 97%);
+            }
+
+            .hero-content {
+                max-width: 100%;
             }
 
             .hero-kicker {
-                letter-spacing: 6px;
-                font-size: 0.8rem;
+                letter-spacing: 5px;
+                font-size: 0.78rem;
+                margin-bottom: 0.9rem;
+            }
+
+            .hero h1 {
+                margin-bottom: 0.85rem;
+            }
+
+            .hero-lead {
+                font-size: 0.98rem;
+                line-height: 1.75;
+                max-width: 100%;
+                padding-inline: 4px;
+            }
+
+            .countdown {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+                margin-top: 1.5rem;
             }
 
             .count-box {
-                min-width: 86px;
-                padding: 16px;
+                min-width: 0;
+                width: 100%;
+                max-width: none;
+                padding: 16px 10px 14px;
+                border-radius: 18px;
             }
 
             .count-box span {
-                font-size: 1.8rem;
+                font-size: 1.75rem;
+            }
+
+            .count-box small {
+                font-size: 0.64rem;
+                letter-spacing: 0.8px;
+            }
+
+            .hero-buttons {
+                margin-top: 1.4rem;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .btn-cta,
+            .btn-soft {
+                width: 100%;
+                min-height: 52px;
+                padding: 15px 20px;
+                border-radius: 18px;
+                font-size: 0.98rem;
+            }
+
+            .intro-section,
+            .staff-section,
+            .program-section,
+            .bag-section,
+            .final-section {
+                padding: 64px 0;
+            }
+
+            .intro-card,
+            .program-card,
+            .bag-card,
+            .quote-card,
+            .staff-card,
+            .final-box {
+                padding: 22px 18px;
+                border-radius: 20px;
+            }
+
+            .section-title {
+                margin-bottom: 0.65rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.97rem;
+                line-height: 1.75;
+            }
+
+            .intro-icon,
+            .bag-icon,
+            .program-icon {
+                font-size: 2.35rem;
+                margin-bottom: 12px;
+            }
+
+            .staff-shell {
+                padding-inline: 0;
+            }
+
+            .staff-section .text-center.mb-5,
+            .intro-section .text-center.mb-5 {
+                margin-bottom: 2rem !important;
+            }
+
+            .staff-card {
+                padding: 22px 14px;
+                border-radius: 20px;
+            }
+
+            .staff-icon {
+                width: 68px;
+                height: 68px;
+                line-height: 68px;
+                font-size: 2.6rem;
+                margin-bottom: 12px;
+            }
+
+            .staff-card h4 {
+                font-size: 1rem;
+                margin-bottom: 8px !important;
+            }
+
+            .staff-role {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                line-height: 1.2;
+            }
+
+            .timeline {
+                margin-top: 1rem;
+                padding-left: 20px;
+            }
+
+            .timeline::before {
+                left: 6px;
+                width: 2px;
+            }
+
+            .timeline-item {
+                padding: 0 0 18px 16px;
+            }
+
+            .timeline-item::before {
+                left: -18px;
+                width: 14px;
+                height: 14px;
+                box-shadow: 0 0 0 5px rgba(96,108,56,0.13);
+            }
+
+            .timeline-step {
+                font-size: 0.7rem;
+                letter-spacing: 1.2px;
+            }
+
+            .timeline-item h4 {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+
+            .timeline-item p,
+            .intro-card p,
+            .program-card p,
+            .bag-card p,
+            .quote-card p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .bag-list {
+                gap: 10px;
+                margin-top: 1rem;
+            }
+
+            .bag-list li {
+                padding: 12px 13px;
+                border-radius: 14px;
+                font-size: 0.93rem;
+                align-items: flex-start;
+            }
+
+            .bag-list i {
+                font-size: 1.15rem;
+                margin-top: 1px;
+            }
+
+            .final-box {
+                padding: 32px 18px;
+                border-radius: 24px;
+            }
+
+            .final-box p {
+                margin-bottom: 1.4rem;
+                font-size: 0.96rem;
+                line-height: 1.75;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .container,
+            .container-fluid {
+                --bs-gutter-x: 1rem;
+            }
+
+            .hero {
+                padding: 90px 0 76px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.7rem, 15vw, 4rem);
+            }
+
+            .section-title {
+                font-size: clamp(1.9rem, 10vw, 2.7rem);
+            }
+
+            .countdown {
+                gap: 8px;
+            }
+
+            .count-box {
+                padding: 14px 8px 12px;
+                border-radius: 16px;
+            }
+
+            .count-box span {
+                font-size: 1.55rem;
+            }
+
+            .count-box small {
+                font-size: 0.6rem;
+            }
+
+            .intro-card,
+            .program-card,
+            .bag-card,
+            .quote-card,
+            .staff-card {
+                padding: 20px 16px;
+            }
+
+            .staff-shell {
+                padding-inline: 0;
+            }
+
+            .staff-section .row {
+                --bs-gutter-x: 0.75rem;
+                --bs-gutter-y: 0.75rem;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .staff-icon {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 2.2rem;
+            }
+
+            .staff-card h4 {
+                font-size: 0.95rem;
+            }
+
+            .staff-role {
+                font-size: 0.76rem;
+                padding: 7px 10px;
+            }
+
+            .btn-cta,
+            .btn-soft {
+                min-height: 50px;
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+
+            .bag-list li {
+                font-size: 0.9rem;
+            }
+
+            .final-box {
+                padding: 28px 16px;
+                border-radius: 22px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .container,
+            .container-fluid {
+                --bs-gutter-x: 1.1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.8rem, 16vw, 4.2rem);
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 10vw, 2.8rem);
+            }
+
+            .section-subtitle,
+            .intro-card p,
+            .program-card p,
+            .bag-card p,
+            .quote-card p,
+            .timeline-item p {
+                font-size: 0.97rem;
+                line-height: 1.7;
+            }
+
+            .count-box {
+                min-width: 78px;
+                padding: 14px 10px;
+            }
+
+            .count-box small {
+                font-size: 0.64rem;
+            }
+
+            .staff-card h4 {
+                font-size: 1.05rem;
+            }
+
+            .staff-role {
+                font-size: 0.84rem;
+                padding: 8px 14px;
+            }
+
+            .bag-list {
+                gap: 10px;
+            }
+
+            .bag-list li {
+                padding: 12px 14px;
+                border-radius: 14px;
+                font-size: 0.95rem;
+            }
+
+            .final-box {
+                padding: 34px 18px;
+                border-radius: 26px;
             }
         }
     </style>
@@ -421,8 +766,8 @@
             <p class="hero-kicker">Viaggio Ado</p>
             <h1>Assisi <span style="font-style: italic; color: var(--light);">2026</span></h1>
             <p class="hero-lead">
-                Un viaggio di fine giugno per stare insieme davvero, camminare, respirare un po’ di bellezza,
-                vivere il gruppo con più profondità del solito e tornare a casa con qualcosa che resta.
+                Dal 26 al 28 giugno 2026, tre giorni ad Assisi per adolescenti e giovani dai 13 anni in su:
+                un campo fatto di strada, gruppo, condivisione e tempo vissuto bene, senza riempitivi inutili.
             </p>
             
             <div class="countdown">
@@ -440,48 +785,54 @@
 
     <section class="container intro-section">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title">Perché Assisi</h2>
+            <h2 class="section-title">Campo Pace Assisi 2026</h2>
             <p class="section-subtitle">
-                Non solo una meta, ma un’occasione fatta bene per vivere giornate diverse dal solito.
-                Assisi ha il ritmo giusto per un viaggio ado: bella da attraversare, forte da ascoltare,
-                semplice solo in apparenza.
+                Dal 26 al 28 giugno 2026. Un’esperienza pensata per adolescenti e giovani dalla terza media in poi,
+                per vivere insieme giorni intensi, semplici e pieni di significato.
             </p>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
                 <div class="intro-card text-center">
-                    <div class="intro-icon"><i class='bx bxs-bus'></i></div>
-                    <h3>Partenza</h3>
-                    <p>Si parte a fine giugno con zaini pronti, sonno discutibile e aspettative alte. Ottimo inizio scientificamente valido.</p>
+                    <div class="intro-icon"><i class='bx bxs-calendar'></i></div>
+                    <h3>Date</h3>
+                    <p>Dal 26 al 28 giugno 2026. Tre giorni secchi, chiari e ben piazzati a fine giugno.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="intro-card text-center">
-                    <div class="intro-icon"><i class='bx bxs-church'></i></div>
-                    <h3>Luogo</h3>
-                    <p>Vicoli, piazze, salite, panorami e luoghi che ti costringono gentilmente a rallentare e guardare meglio.</p>
+                    <div class="intro-icon"><i class='bx bxs-group'></i></div>
+                    <h3>Destinatari</h3>
+                    <p>Adolescenti e giovani dai 13 anni in su, dalla terza media in poi.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="intro-card text-center">
-                    <div class="intro-icon"><i class='bx bxs-heart'></i></div>
-                    <h3>Gruppo</h3>
-                    <p>Tempo condiviso, attività, chiacchiere vere, libertà ben tenuta e qualche momento che lascia il segno.</p>
+                    <div class="intro-icon"><i class='bx bxs-home-heart'></i></div>
+                    <h3>Alloggio</h3>
+                    <p>Presso le Suore Missionarie di Gesù Bambino, per avere una base semplice e adatta al gruppo.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="intro-card text-center">
+                    <div class="intro-icon"><i class='bx bxs-credit-card'></i></div>
+                    <h3>Costo</h3>
+                    <p>140 € a persona, con caparra di 40 € al momento dell’iscrizione.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="staff-section" id="animatori">
-        <div class="container-fluid px-5">
+        <div class="staff-shell">
         
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="section-title">Gli Animatori</h2>
                 <p class="section-subtitle">Pronti a camminare insieme a te</p>
             </div>
             
-            <div class="row g-4 justify-content-center" id="staffGrid" style="max-width:1600px;margin:auto"></div>
+            <div class="row g-4 justify-content-center row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5" id="staffGrid"></div>
         </div>
     </section>
 
@@ -490,27 +841,27 @@
             <div class="col-lg-7" data-aos="fade-right">
                 <div class="program-card h-100">
                     <div class="program-icon"><i class='bx bx-route'></i></div>
-                    <h3>Il senso del viaggio</h3>
+                    <h3>Informazioni utili</h3>
                     <p>
-                        Il programma preciso arriverà più avanti, ma la direzione è già chiara: non una gita buttata lì,
-                        ma un’esperienza costruita con criterio. Che è una parola poco sexy, ma molto utile.
+                        Qui ci sono le cose concrete da sapere. Quelle vere. Quelle che evitano il classico caos da
+                        “pensavo fosse diverso” che puntualmente compare quando la gente legge a metà.
                     </p>
 
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-step">01</div>
-                            <h4>Partire bene</h4>
-                            <p>Entrare nel viaggio insieme, staccare dal ritmo normale e aprire davvero il tempo che avremo davanti.</p>
+                            <h4>Iscrizioni</h4>
+                            <p>Entro il 20 febbraio, tramite il QR code presente nel materiale informativo.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-step">02</div>
-                            <h4>Vivere Assisi</h4>
-                            <p>Camminare, visitare, ascoltare, vedere e lasciarsi un po’ smuovere dai luoghi e dagli incontri.</p>
+                            <h4>Pagamento</h4>
+                            <p>Costo totale di 140 € a persona, con caparra di 40 €.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-step">03</div>
-                            <h4>Stare insieme sul serio</h4>
-                            <p>Condivisione, attività, leggerezza, tempi comuni e momenti in cui il gruppo non è solo un mucchio di gente nello stesso posto.</p>
+                            <h4>Bonifico</h4>
+                            <p>Il pagamento va effettuato tramite bonifico intestato a Chiesa parrocchiale San Giovanni Battista Oppeano.</p>
                         </div>
                     </div>
                 </div>
@@ -518,40 +869,9 @@
 
             <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
                 <div class="quote-card h-100 d-flex flex-column justify-content-center text-center">
-                    <h3>Un viaggio che lascia qualcosa</h3>
-                    <p>
-                        Non serve riempire ogni minuto per fare un’esperienza forte. A volte bastano i posti giusti,
-                        il gruppo giusto e un po’ di disponibilità a non restare sempre in superficie.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container bag-section">
-        <div class="row g-4 align-items-stretch">
-            <div class="col-lg-5" data-aos="fade-up">
-                <div class="bag-card h-100">
-                    <div class="bag-icon"><i class='bx bx-briefcase-alt-2'></i></div>
-                    <h3>Cosa portare</h3>
-                    <p>
-                        La lista vera si potrà rifinire, ma intanto il principio è semplice: porta ciò che serve.
-                        Non tutta la tua biografia infilata nello zaino.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-                <div class="bag-card h-100">
-                    <ul class="bag-list">
-                        <li><i class='bx bx-check-circle'></i>Zaino comodo</li>
-                        <li><i class='bx bx-check-circle'></i>Borraccia</li>
-                        <li><i class='bx bx-check-circle'></i>Vestiti leggeri</li>
-                        <li><i class='bx bx-check-circle'></i>Felpa per la sera</li>
-                        <li><i class='bx bx-check-circle'></i>Scarpe giuste per camminare</li>
-                        <li><i class='bx bx-check-circle'></i>Occorrente personale</li>
-                        <li><i class='bx bx-check-circle'></i>Spirito di adattamento</li>
-                        <li><i class='bx bx-check-circle'></i>Voglia di esserci davvero</li>
-                    </ul>
+                    <h3>Dati per il bonifico</h3>
+                    <p><strong>IBAN</strong><br>IT 90 Q 02008 59630 000003770179</p>
+                    <p class="mt-3 mb-0"><strong>Intestato a</strong><br>Chiesa parrocchiale San Giovanni Battista Oppeano</p>
                 </div>
             </div>
         </div>
@@ -561,15 +881,16 @@
         <div class="final-box" data-aos="zoom-in">
             <h2>Assisi ci aspetta</h2>
             <p>
-                Un viaggio semplice solo in apparenza. In realtà uno di quelli che, se lo vivi bene,
-                rimane dentro più del previsto. E questa è la parte interessante.
+                Tre giorni ad Assisi, dal 26 al 28 giugno 2026. Iscrizioni entro il 20 febbraio.
+                Tutto il resto lo farà il gruppo, il cammino e la voglia di esserci sul serio.
             </p>
-            <a href="#" class="btn-cta"><i class='bx bx-edit-alt'></i>Iscriviti Ora</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCVJwaBD4GWnxG_Xf5qbcZ_xGYVSn-HKPculYxrV9VYWaKBw/viewform" target="_blank" rel="noopener noreferrer" class="btn-cta"><i class='bx bx-edit-alt'></i>Iscriviti entro il 20 febbraio</a>
         </div>
     </section>
 
     <footer class="text-center">
-        <p class="mt-0 text-muted small mb-0">&copy; 2026 - Insieme verso Assisi</p>
+        <p class="mt-0 text-muted small mb-1">&copy; 2026 - Insieme verso Assisi</p>
+        <p class="text-muted small mb-0">Powered by <a href="https://dennisbottari.it" target="_blank" style="color:inherit;text-decoration:underline">dennisbottari.it</a></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -589,7 +910,7 @@
 
         const staffGrid = document.getElementById('staffGrid');
         staffGrid.innerHTML = animatori.map((a, i) => `
-            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="${i * 100}">
+            <div class="col" data-aos="fade-up" data-aos-delay="${i * 100}">
                 <div class="staff-card text-center">
                     <div class="staff-icon"><i class='bx ${a.i}'></i></div>
                     <h4 class="fw-bold mb-2">${a.n}</h4>
@@ -598,7 +919,7 @@
             </div>
         `).join('');
 
-        const end = new Date("June 25, 2026 08:00:00").getTime();
+        const end = new Date("June 26, 2026 08:00:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
