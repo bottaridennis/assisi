@@ -37,7 +37,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            overflow-x: hidden;
+            overflow-x: clip;
         }
 
         .section-title {
@@ -57,7 +57,7 @@
         .hero {
             min-height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
-                url('assisi.jpg');
+                url('Assisi.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -253,7 +253,7 @@
         .staff-shell {
             width: min(100%, 1680px);
             margin: 0 auto;
-            padding-inline: 0;
+            padding-inline: 24px;
         }
 
         .staff-card {
@@ -409,6 +409,43 @@
         }
 
         @media (max-width: 767.98px) {
+
+            .container,
+            .staff-shell,
+            .hero-content,
+            .final-box,
+            .intro-card,
+            .program-card,
+            .bag-card,
+            .quote-card,
+            .staff-card {
+                max-width: 100%;
+            }
+
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .staff-shell {
+                padding-inline: 20px;
+            }
+
+            .hero-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .countdown,
+            .hero-buttons,
+            .bag-list,
+            .staff-section .row,
+            .intro-section .row,
+            .program-section .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
             body {
                 -webkit-tap-highlight-color: transparent;
             }
@@ -617,151 +654,19 @@
             }
         }
 
-        @media (max-width: 575.98px) {
-
-            .container,
-            .container-fluid {
-                --bs-gutter-x: 1rem;
-            }
-
-            .hero {
-                padding: 90px 0 76px;
-            }
-
-            .hero h1 {
-                font-size: clamp(2.7rem, 15vw, 4rem);
-            }
-
-            .section-title {
-                font-size: clamp(1.9rem, 10vw, 2.7rem);
-            }
-
-            .countdown {
-                gap: 8px;
-            }
-
-            .count-box {
-                padding: 14px 8px 12px;
-                border-radius: 16px;
-            }
-
-            .count-box span {
-                font-size: 1.55rem;
-            }
-
-            .count-box small {
-                font-size: 0.6rem;
-            }
-
-            .intro-card,
-            .program-card,
-            .bag-card,
-            .quote-card,
-            .staff-card {
-                padding: 20px 16px;
-            }
-
-            .staff-shell {
-                padding-inline: 0;
-            }
-
-            .staff-section .row {
-                --bs-gutter-x: 0.75rem;
-                --bs-gutter-y: 0.75rem;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .staff-icon {
-                width: 60px;
-                height: 60px;
-                line-height: 60px;
-                font-size: 2.2rem;
-            }
-
-            .staff-card h4 {
-                font-size: 0.95rem;
-            }
-
-            .staff-role {
-                font-size: 0.76rem;
-                padding: 7px 10px;
-            }
-
-            .btn-cta,
-            .btn-soft {
-                min-height: 50px;
-                padding: 14px 18px;
-                font-size: 0.95rem;
-            }
-
-            .bag-list li {
-                font-size: 0.9rem;
-            }
-
-            .final-box {
-                padding: 28px 16px;
-                border-radius: 22px;
-            }
+        bag-list {
+            gap: 10px;
         }
 
-        @media (max-width: 575.98px) {
+        .bag-list li {
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+        }
 
-            .container,
-            .container-fluid {
-                --bs-gutter-x: 1.1rem;
-            }
-
-            .hero h1 {
-                font-size: clamp(2.8rem, 16vw, 4.2rem);
-            }
-
-            .section-title {
-                font-size: clamp(2rem, 10vw, 2.8rem);
-            }
-
-            .section-subtitle,
-            .intro-card p,
-            .program-card p,
-            .bag-card p,
-            .quote-card p,
-            .timeline-item p {
-                font-size: 0.97rem;
-                line-height: 1.7;
-            }
-
-            .count-box {
-                min-width: 78px;
-                padding: 14px 10px;
-            }
-
-            .count-box small {
-                font-size: 0.64rem;
-            }
-
-            .staff-card h4 {
-                font-size: 1.05rem;
-            }
-
-            .staff-role {
-                font-size: 0.84rem;
-                padding: 8px 14px;
-            }
-
-            .bag-list {
-                gap: 10px;
-            }
-
-            .bag-list li {
-                padding: 12px 14px;
-                border-radius: 14px;
-                font-size: 0.95rem;
-            }
-
-            .final-box {
-                padding: 34px 18px;
-                border-radius: 26px;
-            }
+        .final-box {
+            padding: 34px 18px;
+            border-radius: 26px;
         }
     </style>
 </head>
