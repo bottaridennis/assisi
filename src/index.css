@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Space Grotesk", sans-serif;
+  --font-sans: "Outfit", sans-serif;
+  
+  --color-olive: var(--olive);
+  --color-accent: var(--accent);
+  --color-warm-bg: var(--warm-bg);
+  --color-card-bg: var(--card-bg);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border-color);
+}
+
+:root {
+  --olive: #3D5A45;
+  --accent: #BF360C;
+  --warm-bg: #FAFAFA;
+  --card-bg: #FFFFFF;
+  --foreground: #000000;
+  --muted: rgba(0, 0, 0, 0.75);
+  --border-color: rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --olive: #4A6D55;
+  --accent: #FF7E4D;
+  --warm-bg: #0A0A0A;
+  --card-bg: #141414;
+  --foreground: #FFFFFF;
+  --muted: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  @apply bg-warm-bg text-foreground font-sans antialiased overflow-x-hidden transition-colors duration-300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif font-bold tracking-tight text-foreground;
+}
+
+.pill-image {
+  @apply rounded-3xl aspect-[3/4] object-cover shadow-2xl border border-border;
+}
+
+.card {
+  @apply bg-card-bg rounded-[40px] shadow-[0_8px_40px_rgba(0,0,0,0.04)] p-8 md:p-10 border border-border transition-colors duration-300;
+}
+
+.dark .card {
+  @apply shadow-[0_8px_40px_rgba(0,0,0,0.4)];
+}
+
+.olive-button {
+  @apply bg-olive text-white rounded-2xl px-10 py-4 font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-olive/20;
+}
+
+.accent-button {
+  @apply bg-accent text-white rounded-2xl px-10 py-4 font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-accent/20;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
