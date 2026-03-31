@@ -39,9 +39,9 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0 });
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark';
+      return localStorage.getItem('theme') || 'light';
     }
-    return 'dark';
+    return 'light';
   });
 
   useEffect(() => {
