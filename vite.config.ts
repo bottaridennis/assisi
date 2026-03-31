@@ -8,7 +8,7 @@ export default defineConfig(({mode}) => {
   return {
     // If you are deploying to GitHub Pages as a project page (e.g. https://<username>.github.io/<repo>/)
     // you must set the base to '/<repo>/'. If it's a custom domain or user page, use '/'.
-    // base: '/assisi-2026/', 
+    base: '/assisi/', 
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
